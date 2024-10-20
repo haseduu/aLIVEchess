@@ -10,7 +10,9 @@ import time
 import datetime
 def scrape_chess_players_selenium():
     url = "https://2700chess.com/"
+    
     driver = webdriver.Chrome()
+    
     try:
         driver.get(url)
         print(f"Successfully loaded the webpage. Current URL: {driver.current_url}")
