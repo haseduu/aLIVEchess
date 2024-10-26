@@ -1,5 +1,4 @@
-from flask import Flask, render_template
-from db_updater_by_scraping import scrape_chess_players_selenium    
+from flask import Flask
 from flask_pymongo import PyMongo
 from dotenv import load_dotenv
 import os
@@ -17,10 +16,13 @@ else:
 
 @app.route('/', methods=["GET"])
 def main_page():
-    data = mongo.db.chess_players.find({}, {"_id": 0})
-    data = list(data)
-    
-    return {"message": data}
+    fide = mongo.db.fide_ratings.find({}, {"_id": 0})
+    fide = list(fide)
+    blitz = mongo.db.blitz_ratings.find({}, {"_id": 0})
+    blitz = list(blitz)
+    bullet = mongo.db.bullet_ratings.find({}, {"_id": 0})
+    bullet = list(bullet)
+    return {"fide": fide, "blitz": blitz, "bullet": bullet}
  
     
 

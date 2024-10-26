@@ -5,8 +5,8 @@ def make_request(endpoint=None, method="GET", params=None, data=None):
     if endpoint:
         url += f"/{endpoint}"
     if method == "GET":
-        response = requests.get(url)
-    if response:
+        response = requests.get(url, params=params)
+    if response and response.status_code == 200:
         return response.json()
     return None
                 
