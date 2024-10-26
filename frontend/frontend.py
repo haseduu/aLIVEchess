@@ -204,7 +204,6 @@ def main():
     
     if df is not None and not df.empty:
         # Display metrics
-        st.subheader("Ratings Atualizados")
         st.markdown("<h3 style='text-align: center; color: #2e7d32;'>Informações Gerais</h3>", unsafe_allow_html=True)
         st.text("")
         display_metrics(df)
