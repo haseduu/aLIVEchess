@@ -1,9 +1,18 @@
-from make_back_request import make_request
 import pandas as pd
 import streamlit as st
 import plotly.express as px
 from datetime import datetime
-
+import requests
+base_url = "https://backend-livechess.onrender.com"
+def make_request(endpoint=None, method="GET", params=None, data=None):
+    url = base_url
+    if endpoint:
+        url += f"/{endpoint}"
+    if method == "GET":
+        response = requests.get(url, params=params)
+    if response and response.status_code == 200:
+        return response.json()
+    return None
 # Page configuration
 st.set_page_config(
     page_title="Live Chess Player Ratings",
